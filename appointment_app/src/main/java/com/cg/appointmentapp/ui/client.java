@@ -153,6 +153,7 @@ public static void viewapp() throws myexception{
 	
 	int id=0;
 	boolean flag = false;
+	again:
 	do{
 	System.out.println("Enter your appointment ID:");
 	Scanner scan = new Scanner(System.in);
@@ -171,12 +172,13 @@ public static void viewapp() throws myexception{
 	else
 	{
 		//System.out.println("Appointment ID does not exist......Register yourself");
-		System.out.println("To exit press 8");
+		System.out.println("To retry press 8");
 		int num =0;
 		Scanner sc = new Scanner(System.in);
+		num = scan.nextInt();
 		if(num==8)
-		{
-			System.exit(0);
+		{	
+			continue again;
 		}
 		flag =false;
 	}
