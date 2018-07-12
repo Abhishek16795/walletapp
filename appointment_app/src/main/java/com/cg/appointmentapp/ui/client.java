@@ -3,6 +3,7 @@ package com.cg.appointmentapp.ui;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -13,7 +14,7 @@ import com.cg.appointmentapp.service.serviceimpl;
 
 public class client {
 	
-	static patientbean patient = new patientbean();
+	
 	static service service = new serviceimpl();
 	public static void main(String[] args) throws IOException,InputMismatchException, myexception {
 		
@@ -51,6 +52,8 @@ public class client {
 	
 public static void bookapp() throws IOException,InputMismatchException
 {
+		
+		patientbean patient = new patientbean();
 		String name,email,mobilenum,gender;
 		int choice = 0;
 		boolean flag = false,flag1 = false,flag2 = false;
@@ -156,16 +159,18 @@ public static void viewapp() throws myexception{
 	
 	id = scan.nextInt();
 	
-	if(service.existid(id,patient))
+	if(service.existid(id))
 	{	
-		System.out.println("Your name:"+patient.getName());
-		System.out.println("Appointment Status:"+patient.getAppStatus());
-		System.out.println("Appointment Status:"+patient.getDoctorName());
+		patientbean p = new patientbean();
+		p = service.getMap(id);
+		System.out.println("Your name:"+p.getName());
+		System.out.println("Approval Status:"+p.getAppStatus());
+		System.out.println("Doctor Assigned:"+p.getDoctorName()+"\n Further details will be emailed");
 		flag=true;
 	}
 	else
 	{
-		System.out.println("Appointment ID does not exist......Register yourself");
+		//System.out.println("Appointment ID does not exist......Register yourself");
 		System.out.println("To exit press 8");
 		int num =0;
 		Scanner sc = new Scanner(System.in);

@@ -26,12 +26,22 @@ public class daoimpl implements dao {
 		
 	}
 
-	public boolean existid(int id,patientbean patient) throws myexception {
-		// TODO Auto-generated method stub
+	public boolean existid(int id){
+		try{
+			if(h1.containsKey(id))
+				return true;
+			throw new myexception("Doest not exist");
+		}catch(myexception e)
+		{
+			System.out.println(e.getMessage());
+			return false;
+		}
 		
-		if(h1.containsKey(id))
-		return true;
-		else
-		return false;
+	}
+
+	public patientbean getMap(int id) {
+		// TODO Auto-generated method stub
+		patientbean p = (patientbean) h1.get(id);
+		return p;
 	}
 }

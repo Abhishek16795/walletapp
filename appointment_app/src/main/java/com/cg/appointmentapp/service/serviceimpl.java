@@ -1,5 +1,7 @@
 package com.cg.appointmentapp.service;
 
+import java.util.HashMap;
+
 import com.cg.appointmentapp.bean.patientbean;
 import com.cg.appointmentapp.dao.dao;
 import com.cg.appointmentapp.dao.daoimpl;
@@ -48,12 +50,18 @@ public class serviceimpl implements service {
 		d1.addDetails(patient);
 	}
 
-	public boolean existid(int id,patientbean patient) throws myexception {
+	public boolean existid(int id) throws myexception {
 		// TODO Auto-generated method stub
 		
-		return d1.existid(id,patient);
+		return d1.existid(id);
 	}
 
+	public patientbean getMap(int id) {
+		// TODO Auto-generated method stub
+		return d1.getMap(id);
+	}
+
+	
 	
 	
 
